@@ -1,1 +1,6 @@
-
+CREATE TABLE Vendedor(
+dni VARCHAR(8) NOT NULL,
+nombre VARCHAR(50) NOT NULL,
+apellido VARCHAR(50) NOT NULL,
+  
+);
