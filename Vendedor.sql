@@ -15,6 +15,6 @@ CONSTRAINT CK_Vendedor_salario
   check (salario >=0),
   
   CONSTRAINT CK_Vendedor_bono
-  check (bono >=0),
+  check (bono >=0)
   
 );
