@@ -1,5 +1,5 @@
 CREATE TABLE cliente(
-  dni INT(8) NOT NULL,
+  dni INT NOT NULL,
   nombre VARCHAR(50) NOT NULL,
   apellido VARCHAR(50) NOT NULL,
   telefono VARCHAR(20) NOT NULL,
