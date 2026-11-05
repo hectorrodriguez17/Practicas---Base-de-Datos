@@ -1,5 +1,5 @@
 CREATE TABLE Vendedor(
-dni VARCHAR(8) NOT NULL,
+dni INT NOT NULL,
 nombre VARCHAR(50) NOT NULL,
 apellido VARCHAR(50) NOT NULL,
 salario NUMERIC(10,2) NOT NULL,
