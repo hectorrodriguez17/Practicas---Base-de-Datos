@@ -84,3 +84,16 @@ WHERE placa = 'JKL321';
 UPDATE carro
 SET capacidad = 7
 WHERE placa = 'MNO654'
+
+INSERT INTO solicitud
+(solicitud_id, telefono, tiempo_alquiler, precio, estado, fecha_solicitud, fecha_inicio, fecha_fin, cliente_dni, placa, vendedor_dni)
+VALUES 
+(1, 994959344, 5, 350.00, 'pendiente', '2025-03-05', '2025-03-07', '2025-03-10', 43245642, 'DEF354', 45438530),
+(2, 937575123, 3, 240.00, 'aprobada', '2025-04-04', '2025-04-06', '2025-04-10', 90432456, 'EEF546', 57485356),
+(3, 995349432, 7, 560.00, 'aprobada', '2025-05-05', '2025-05-07', '2025-05-09', 49322553, 'GGF893', 43009409),
+(4, 985342435, 2, 180.00, 'pendiente', '2025-06-06', '2025-06-08', '2025-06-10', 45435655, 'EFA543', 45543323),
+(5, 942323342, 10, 700.00, 'finalizado', '2025-07-07', '2025-07-09', '2025-07-11', 43245534, 'GTA678', 48651594);
+
+UPDATE solicitud
+SET estado = 'aprobada'
+WHERE solicitud_id = 1;
