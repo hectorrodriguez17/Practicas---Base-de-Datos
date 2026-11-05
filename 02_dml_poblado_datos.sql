@@ -97,3 +97,19 @@ VALUES
 UPDATE solicitud
 SET estado = 'aprobada'
 WHERE solicitud_id = 1;
+
+UPDATE solicitud
+SET precio = 300.00
+WHERE solicitud_id = 2;
+
+UPDATE solicitud
+SET fecha_fin= '2025-05-10'
+WHERE solicitud_id = 3;
+
+UPDATE solicitud
+SET vendedor_id = 43124532
+WHERE solicitud_id = 4;
+
+UPDATE solicitud
+SET telefono = 903424520 
+WHERE solicitud_id = 5;
