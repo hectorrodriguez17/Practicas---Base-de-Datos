@@ -55,3 +55,32 @@ WHERE nombre='Elena';
 UPDATE vendedor
 SET fecha_registro='2025-05-21'
 WHERE dni=43218765;
+
+INSERT INTO carro
+(placa, marca, modelo, estado, color, anio, capacidad)
+VALUES
+('ABC123', 'Toyota', 'Corolla', 'Corolla', 'disponible', 'Blanco', 2022, 5),
+('DEF456', 'Hyundai', 'Accent', 'Accent', 'disponible', 'Negro', 2021, 5),
+('GHI789', 'Kia', 'Rio', 'disponible', 'Rojo', 2023, 5),
+('JKL321', 'Nissan', 'Versa', 'disponible' , 'Gris', 2022, 5),
+('MNO654', 'Chevrolet', 'Tracker', 'disponible', 'Azul', 2024, 5),
+
+UPDATE carro
+SET color = 'Plata'
+WHERE placa = 'ABC123';
+
+UPDATE carro
+SET estado = 'mantenimiento'
+WHERE placa = 'DEF456';
+
+UPDATE carro
+SET color = 'Negro Metalizado'
+WHERE plata = 'JKL321';
+
+UPDATE carro
+SET estado = 'alquilado'
+WHERE placa = 'JKL321';
+
+UPDATE carro
+SET capacidad = 7
+WHERE placa = 'MNO654'
