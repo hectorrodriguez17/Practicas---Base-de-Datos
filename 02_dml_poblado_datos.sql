@@ -10,3 +10,33 @@ VALUES
 UPDATE cliente
 SET direccion= 'Miraflores'
 WHERE dni =49975626;
+
+
+INSERT INTO vendedor
+(dni, nombre, aprellido, salario, bono, fecha_registro, correo, supervisor_dni)
+VALUES
+(87654321,'Carlos', 'Ramos',1800.50, 200.20, '2025-01-10', 'carlos1@gmail.com', NULL)
+(76543218,'Rosa', 'Diaz',2000, 250, '2025-02-15', 'rosa2@gmail.com', 87654321)
+(65432187,'Miguel', 'Soto',1900.50, 100.20, '2025-03-20', 'miguel3@gmail.com', 87654321)
+(54321876,'Elena', 'Vargas',2100, 300.20, '2025-04-05', 'elena4@gmail.com', NULL)
+(43218765,'Jorge', 'Castro',1850.50, 180.20, '2025-05-12', 'jorge5@gmail.com', NULL)
+
+UPDATE vendedor
+SET apellido='Rodriguez'
+WHERE nombre='Carlos';
+
+UPDATE vendedor
+SET salario=1800
+WHERE dni=76543218;
+
+UPDATE vendedor
+SET correo='miguel@gmail.com'
+WHERE nombre='Miguel';
+
+UPDATE vendedor
+SET supervisor_dni=87654321
+WHERE nombre='Elena';
+
+UPDATE vendedor
+SET fecha_registro='2025-05-21'
+WHERE dni=43218765;
