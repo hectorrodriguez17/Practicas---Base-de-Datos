@@ -23,6 +23,10 @@ supervisor_dni INTEGER,
 CONSTRAINT PK_Vendedor
   PRIMARY KEY (dni),
 
+CONSTRAINT FK_Vendedor_supervisor
+  FOREIGN KEY (supervisor,dni)
+  REFERENCES Vendedo(dni),
+
 CONSTRAINT CK_Vendedor_salario
   check (salario >=0),
   
