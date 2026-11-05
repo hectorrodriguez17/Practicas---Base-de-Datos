@@ -11,6 +11,21 @@ UPDATE cliente
 SET direccion= 'Miraflores'
 WHERE dni =49975626;
 
+UPDATE cliente
+SET telefono= '938294067'
+WHERE nombre ='Tulio';
+
+UPDATE cliente
+SET apellido= '938294067'
+WHERE licencia ='LIC010';
+
+UPDATE cliente
+SET nombre= 'barcobasurero'
+WHERE direccion ='Hunter';
+
+UPDATE cliente
+SET licencia = 'LIC015'
+WHERE nombre ='Juan';
 
 INSERT INTO vendedor
 (dni, nombre, aprellido, salario, bono, fecha_registro, correo, supervisor_dni)
