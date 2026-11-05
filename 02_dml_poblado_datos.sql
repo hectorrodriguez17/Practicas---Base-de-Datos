@@ -113,3 +113,32 @@ WHERE solicitud_id = 4;
 UPDATE solicitud
 SET telefono = 903424520 
 WHERE solicitud_id = 5;
+
+INSERT INTO registro
+(cliente_dni, solicitud_id, vendedor_dni, nombre, apellido)
+VALUES
+('12345678', 1, '87654321', 'Juan', 'Perez'),
+('23456781', 2, '76543218', 'Maria', 'Lopez'),
+('34567812', 3, '65432187', 'Pedro', 'Quispe'),
+('45678123', 4, '54321876', 'Ana', 'Torres'),
+('56781234', 5, '43218765', 'Luis', 'Flores');
+
+UPDATE registro
+SET apellido = 'Perez Garcia'
+WHERE solicitud_id = 1;
+
+UPDATE registro
+SET apellido = 'Lopez Beltzu'
+WHERE solicitud_id = 2;
+
+UPDATE registro
+SET apellido = 'Quispe Medina'
+WHERE solicitud_id = 3;
+
+UPDATE registro
+SET apellido = 'Torres Teran'
+WHERE solicitud_id = 4;
+
+UPDATE registro
+SET apellido = 'Flores Palomino'
+WHERE solicitud = 5;
