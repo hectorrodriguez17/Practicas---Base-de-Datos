@@ -1,8 +1,8 @@
 CREATE TABLE cliente(
-  dni VARCHAR(8) NOT NULL,
+  dni INT NOT NULL,
   nombre VARCHAR(50) NOT NULL,
   apellido VARCHAR(50) NOT NULL,
-  telefono VARCHAR(20) NOT NULL,
+  telefono INT NOT NULL,
   licencia VARCHAR(20) NOT NULL,
   direccion VARCHAR(50),
 
@@ -11,14 +11,14 @@ CREATE TABLE cliente(
 );
 
 CREATE TABLE Vendedor(
-dni VARCHAR(8) NOT NULL,
+dni INT NOT NULL,
 nombre VARCHAR(50) NOT NULL,
 apellido VARCHAR(50) NOT NULL,
 salario NUMERIC(10,2) NOT NULL,
 bono NUMERIC(10,2) NOT NULL,
 fecha_registro DATE NOT NULL,
 correo VARCHAR(100),
-supervisor_dni VARCHAR(8),
+supervisor_dni INT,
 
 CONSTRAINT PK_Vendedor
   PRIMARY KEY (dni),
@@ -53,16 +53,16 @@ CREATE TABLE carro(
 
 Create Table solicitud(
   solicitud_id INT NOT NULL,
-  telefono VARCHAR(15) NOT NULL,
+  telefono INT NOT NULL,
   tiempo_alquiler NUMERIC(10,2) NOT NULL,
   precio NUMERIC(10,2) NOT NULL,
   estado VARCHAR(20) NOT NULL,
   fecha_solicitud DATE NOT NULL,
   fecha_inicio DATE NOT NULL,
   fecha_fin DATE NOT NULL,
-  cliente_dni VARCHAR(8) NOT NULL,
+  cliente_dni INT NOT NULL,
   placa VARCHAR(10) NOT NULL,
-  vendedor_dni VARCHAR(8) NOT NULL,
+  vendedor_dni INT NOT NULL,
 
 CONSTRAINT pk_solicitud
     PRIMARY KEY (solicitud_id),
@@ -90,10 +90,10 @@ CONSTRAINT pk_solicitud
   );
 
 CREATE TABLE registro(
-  registro_id SERIAL NOT NULL,
-  cliente_dni VARCHAR(8) NOT NULL,
-  solicitud_id INTEGER NOT NULL,
-  vendedor_dni VARCHAR(8) NOT NULL,
+  registro_id INT NOT NULL,
+  cliente_dni INT NOT NULL,
+  solicitud_id INT NOT NULL,
+  vendedor_dni INT NOT NULL,
   nombre VARCHAR(50),
   apellido VARCHAR(50),
 
