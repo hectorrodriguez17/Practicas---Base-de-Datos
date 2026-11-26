@@ -119,5 +119,24 @@ CREATE TABLE registro(
   CONSTRAINT uk_registro_solicitud
       UNIQUE(solicitud_id)
 );
+
+CREATE TABLE solicitud_seguro (
+  solicitud_id INTEGER NOT NULL,
+  seguro_id INTEGER NOT NULL,
+  subtotal NUMERIC(10,2) NOT NULL,
+
+  CONSTRAINT pk_solicitud_seguro PRIMARY KEY (solicitud_id, seguro_id),
+  CONSTRAINT fk_solseg_solicitud FOREIGN KEY (solicitud_id)
+        REFERENCES solicitud(solicitud_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+  CONSTRAINT fk_solseg_seguro FOREIGN KEY (seguro_id)
+        REFERENCES seguro(seguro_id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
+    CONSTRAINT ck_solseg_subtotal CHECK (subtotal >= 0)
+);
+
+
   
 
