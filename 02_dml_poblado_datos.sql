@@ -1,9 +1,6 @@
---  =============================================================================
---  MÓDULO CLIENTE
---  Rregistro base de 5 clientes y actualzaciones de datos de contacto y direccion.
 START TRANSACTION;
 
-INSERT INTO cliente
+INSERT INTO cliente -- Insert para la tabla cliente en donde pedimos los datos para poblar la tabla
 (dni,nombre,apellido,telefono, licencia ,direccion)
 VALUES
 (59945620, 'Tulio', 'Perez', 991234567, 'LIC001', 'Arequipa'),
@@ -12,7 +9,7 @@ VALUES
 (74145223, 'Pablo', 'Torres', 965432109, 'LIC007', 'Hunter'),
 (90441524, 'Juan', 'Flores', 954321098, 'LIC020', 'Arequipa');
 
--- Actualización de dirección y teléfono de clientes
+-- Update de los datos ya existentes de la tabla clientes
 UPDATE cliente
 SET direccion= 'Miraflores'
 WHERE dni =49975626;
@@ -33,15 +30,11 @@ UPDATE cliente
 SET licencia = 'LIC015'
 WHERE nombre ='Juan';
 
-COMMIT; --Confirmación atómica: inserción e updates de la tabla cliente
+COMMIT; 
 
-
---  =============================================================================
---  MÓDULO VENDEDOR
---  Registro de 5 vandedores y actualizaciones de datos laborales-
 START TRANSACTION;
 
-INSERT INTO vendedor
+INSERT INTO vendedor -- Insert para la tabla vendedor llenando la tabla  con los datos solicitados, ponemos null a los que son empleados tipo supervisor
 (dni, nombre, apellido, salario, bono, fecha_registro, correo, supervisor_dni)
 VALUES
 (87654321,'Carlos', 'Ramos',1800.50, 200.20, '2025-01-10', 'carlos1@gmail.com', NULL),
@@ -50,6 +43,7 @@ VALUES
 (54321876,'Elena', 'Vargas',2100, 300.20, '2025-04-05', 'elena4@gmail.com', NULL),
 (43218765,'Jorge', 'Castro',1850.50, 180.20, '2025-05-12', 'jorge5@gmail.com', NULL);
 
+-- Updates de la tabla vendedor donde actualizamos distintos datos utilizando las funnciones Where
 UPDATE vendedor
 SET apellido='Rodriguez'
 WHERE nombre='Carlos';
@@ -70,15 +64,12 @@ UPDATE vendedor
 SET fecha_registro='2025-05-21'
 WHERE dni=43218765;
 
-COMMIT; -- Confirmación atómica: gestión de datos del módulo vendedor
+COMMIT; 
 
 
---  =============================================================================
---  MÓDULO CARRO
---  Alta de 5 vehículos y actualizaciones de estado y atributos.
 START TRANSACTION;
 
-INSERT INTO carro
+INSERT INTO carro -- Insert para la tabla carro dónde solicitamos los respectivos datos para su llenado
 (placa, marca, modelo, estado, color, anio, capacidad)
 VALUES
 ('ABC123', 'Toyota', 'Corolla', 'disponible', 'Blanco', 2022, 5),
@@ -87,7 +78,7 @@ VALUES
 ('JKL321', 'Nissan', 'Versa', 'disponible' , 'Gris', 2022, 5),
 ('MNO654', 'Chevrolet', 'Tracker', 'disponible', 'Azul', 2024, 5);
 
--- Actualizaciones en la información del vehiculo
+-- Updates para los datos existentes de la tabla carro en distintas columnas con Where
 UPDATE carro
 SET color = 'Plata'
 WHERE placa = 'ABC123';
@@ -108,15 +99,12 @@ UPDATE carro
 SET capacidad = 7
 WHERE placa = 'MNO654';
 
-COMMIT; -- Confirmación atómica: mantenimiento del inventario vehicular
+COMMIT; 
 
 
---  =============================================================================
---  MÓDULO SOLICITUD
---  Registro de 5 solicitudes  (conectadas con clientes, vendedores y autos válidos).
 START TRANSACTION;
 
-INSERT INTO solicitud
+INSERT INTO solicitud -- Insert para la tabla solicitud con los datos que se requieren para la tabla
 (solicitud_id, telefono, tiempo_alquiler, precio, estado, fecha_solicitud, fecha_inicio, fecha_fin, cliente_dni, placa, vendedor_dni)
 VALUES
 (1, 991234567, 5, 350.00, 'pendiente', '2025-03-05', '2025-03-07', '2025-03-10', 59945620, 'ABC123', 87654321),
@@ -125,7 +113,7 @@ VALUES
 (4, 965432109, 2, 180.00, 'pendiente', '2025-06-06', '2025-06-08', '2025-06-10', 74145223, 'JKL321', 54321876),
 (5, 954321098, 10, 700.00, 'finalizado', '2025-07-07', '2025-07-09', '2025-07-11', 90441524, 'MNO654', 43218765);
 
--- Actualización de estado, precios y teléfonos en solicitudes
+-- Updates para los datos existentes en la tabla solicitud modificando distintas columnas usando la funcion Where
 UPDATE solicitud
 SET estado = 'aprobada'
 WHERE solicitud_id = 1;
@@ -146,14 +134,11 @@ UPDATE solicitud
 SET telefono = 903424520
 WHERE solicitud_id = 5;
 
-COMMIT; -- Confirmación atómica: procesamiento de solicitudes de alquiler
+COMMIT; 
 
---  =============================================================================
--- MÓDULO SOLICITUD_SEGURO
--- Asociación de seguros contratados por solicitud y ajustes de subtotal.
 START TRANSACTION;
 
-INSERT INTO solicitud_seguro (solicitud_id, seguro_id, subtotal)
+INSERT INTO solicitud_seguro (solicitud_id, seguro_id, subtotal) -- Insert para la tabla solicitud_seguro en donde se ingresan los datos que requiere la tabla para funcionar
 VALUES
 (1, 1, 54.00),
 (2, 2, 192.00),
@@ -161,7 +146,7 @@ VALUES
 (4, 4, 45.00),
 (5, 5, 140.00);
 
--- Actualización de subtotales tras descuentos o recalculos
+-- Updates para la tabla solicitud_seguro actualizando datos ya existentes de la tabla 
 UPDATE solicitud_seguro
 SET subtotal = 50.00
 WHERE solicitud_id = 1 AND seguro_id = 1;
@@ -182,15 +167,12 @@ UPDATE solicitud_seguro
 SET subtotal = 130.00
 WHERE solicitud_id = 5 AND seguro_id = 5;
 
-COMMIT; -- Confirmación atómica: seguros contratados por solicitud
+COMMIT;
 
 
--- =============================================================================
--- MÓDULO REGISTRO
--- Registro de 5 contratos (vinculados a los DNI y solicitudes existentes).
 START TRANSACTION;
 
-INSERT INTO registro
+INSERT INTO registro -- Insert para la tabla registro con los datos que se requieren para el correcto funcionamiento de la tabla
 (cliente_dni, solicitud_id, vendedor_dni, nombre, apellido)
 VALUES
 (59945620, 1, 87654321, 'Tulio', 'Perez'),
@@ -199,7 +181,7 @@ VALUES
 (74145223, 4, 54321876, 'Pablo', 'Torres'),
 (90441524, 5, 43218765, 'Juan', 'Flores');
 
--- Actualizaciones de apellidos completos en las fichas de registro
+-- Updates de la tabla registro actualizando datos ya existentes 
 UPDATE registro
 SET apellido = 'Perez Garcia'
 WHERE solicitud_id = 1;
@@ -220,4 +202,4 @@ UPDATE registro
 SET apellido = 'Flores Palomino'
 WHERE solicitud_id = 5;
 
-COMMIT; -- Confirmación atómica: formalización de contratos e historial
+COMMIT;
