@@ -109,7 +109,32 @@ CREATE TABLE solicitud_seguro (
         ON UPDATE CASCADE,
     CONSTRAINT ck_solseg_subtotal CHECK (subtotal >= 0)
 );
+CREATE TABLE pago(
+  pago_id INTEGER NOT NULL,
+  solicitud_id INTEGER NOT NULL,
+  monto NUMERIC(10,2) NOT NULL,
+  metodo_pago VARCHAR(20) NOT NULL,
+  estado VARCHAR(20) NOT NULL DEFAULT 'completado',
+  fecha_pago DATE NOT NULL DEFAULT CURRENT_DATE,
+  codigo_operacion VARCHAR(50),
 
+  CONSTRAINT pk_pago
+    PRIMARY KEY (pago_id),
+  CONSTRAINT uk_pago_codigo
+    UNIQUE (codigo_operacion),
+  CONSTRAINT fk_pago_solicitud
+    FOREING KEY (solicitud_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+  CONSTRAINT ck_pago_monto
+    CHECK (monto > 0),
+  CONSTRAINT ck_pago_metodo
+    CHECK (metodo_pago IN( 'efectivo', 'tarjeta', 'tranferencia', 'yape_plin')),
+
+  CONSTRAINT ck_pago_estado
+    CHECK(estado IN('pendiente', 'complete', 'reembolsado', 'fallido'))
+);
 CREATE TABLE registro(
   registro_id INTEGER NOT NULL,
   cliente_dni INTEGER NOT NULL,
