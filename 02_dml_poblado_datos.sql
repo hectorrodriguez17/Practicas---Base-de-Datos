@@ -148,6 +148,42 @@ WHERE solicitud_id = 5;
 
 COMMIT; -- Confirmación atómica: procesamiento de solicitudes de alquiler
 
+--  =============================================================================
+-- MÓDULO SOLICITUD_SEGURO
+-- Asociación de seguros contratados por solicitud y ajustes de subtotal.
+START TRANSACTION;
+
+INSERT INTO solicitud_seguro (solicitud_id, seguro_id, subtotal)
+VALUES
+(1, 1, 54.00),
+(2, 2, 192.00),
+(3, 3, 90.00),
+(4, 4, 45.00),
+(5, 5, 140.00);
+
+-- Actualización de subtotales tras descuentos o recalculos
+UPDATE solicitud_seguro
+SET subtotal = 50.00
+WHERE solicitud_id = 1 AND seguro_id = 1;
+
+UPDATE solicitud_seguro
+SET subtotal = 180.00
+WHERE solicitud_id = 2 AND seguro_id = 2;
+
+UPDATE solicitud_seguro
+SET subtotal = 95.00
+WHERE solicitud_id = 3 AND seguro_id = 3;
+
+UPDATE solicitud_seguro
+SET subtotal = 40.00
+WHERE solicitud_id = 4 AND seguro_id = 4;
+
+UPDATE solicitud_seguro
+SET subtotal = 130.00
+WHERE solicitud_id = 5 AND seguro_id = 5;
+
+COMMIT; -- Confirmación atómica: seguros contratados por solicitud
+
 
 -- =============================================================================
 -- MÓDULO REGISTRO
