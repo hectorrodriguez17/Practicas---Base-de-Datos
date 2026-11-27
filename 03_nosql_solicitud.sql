@@ -1,3 +1,11 @@
+-- Entidades invlucradas en una solicitud de alquiler:
+    -- cliente
+    -- carro
+    -- vendedor
+    --solicitud
+    -- solicitud_seguro
+    -- pago
+
 SELECT
   s.solicitud_id,
   s.estado AS estado_solicitud,
