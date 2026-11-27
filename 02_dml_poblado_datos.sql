@@ -35,7 +35,7 @@ VALUES
 ('74145223', 'Pablo', 'Torres', '965432109', 'pablo@gmail.com', 'LIC007', 'Hunter', '2025-04-12'),
 ('90441524', 'Juan', 'Flores', '954321098', 'juan@gmail.com', 'LIC020', 'Arequipa', '2025-05-20');
 
--- Updates de los datos ya existentes en la tabla cliente usando Where y usando distitnos valores para poder actualizar los datos donde se desea (como dni, nombre, licencia, etc)
+-- Updates de los datos ya existentes en la tabla cliente usando Where y usando distintos valores para poder actualizar los datos donde se desea (como dni, nombre, licencia, etc)
 UPDATE cliente
 SET direccion = 'Miraflores'
 WHERE dni = '49975626';
@@ -56,7 +56,7 @@ UPDATE cliente
 SET licencia = 'LIC015'
 WHERE nombre = 'Juan';
 
-INSERT INTO vendedor (dni, nombre, apellido, salario, bono, fecha_registro, correo, supervisor_dni, sucursal_id)
+INSERT INTO vendedor (dni, nombre, apellido, salario, bono, fecha_registro, correo, supervisor_dni, sucursal_id)-- Insert para la tabla vendedor respetando los datos solicitados en la tabla
 VALUES
 ('87654321', 'Carlos', 'Ramos', 1800.50, 200.20, '2025-01-10', 'carlos1@gmail.com', NULL, 1),
 ('76543218', 'Rosa', 'Diaz', 2000.00, 250.00, '2025-02-15', 'rosa2@gmail.com', '87654321', 1),
@@ -64,6 +64,7 @@ VALUES
 ('54321876', 'Elena', 'Vargas', 2100.00, 300.20, '2025-04-05', 'elena4@gmail.com', NULL, 3),
 ('43218765', 'Jorge', 'Castro', 1850.50, 180.20, '2025-05-12', 'jorge5@gmail.com', NULL, 4);
 
+--Updates de los datos ya existentes en la tabla vendedor usando WHERE por llave primaria (dni) y por nombre
 UPDATE vendedor
 SET apellido = 'Rodriguez'
 WHERE nombre = 'Carlos';
@@ -84,14 +85,14 @@ UPDATE vendedor
 SET fecha_registro = '2025-05-21'
 WHERE dni = '43218765';
 
-INSERT INTO carro (placa, marca, modelo, estado, color, anio, capacidad, kilometraje, categoria_id, sucursal_id)
+INSERT INTO carro (placa, marca, modelo, estado, color, anio, capacidad, kilometraje, categoria_id, sucursal_id)--Insert para la tabla carro respetando los datos solicitados en la tabla
 VALUES
 ('ABC123', 'Toyota', 'Corolla', 'disponible', 'Blanco', 2022, 5, 15000, 2, 1),
 ('DEF456', 'Hyundai', 'Accent', 'disponible', 'Negro', 2021, 5, 28000, 1, 1),
 ('GHI789', 'Kia', 'Rio', 'disponible', 'Rojo', 2023, 5, 9500, 1, 2),
 ('JKL321', 'Nissan', 'Versa', 'disponible', 'Gris', 2022, 5, 19200, 2, 3),
 ('MNO654', 'Chevrolet', 'Tracker', 'disponible', 'Azul', 2024, 5, 5000, 3, 4);
-
+--Updates de los datos ya existentes en la tabla carro usando Where desde la llave primaria (placa) para modificar color, estado y capacidad
 UPDATE carro
 SET color = 'Plata'
 WHERE placa = 'ABC123';
@@ -112,14 +113,14 @@ UPDATE carro
 SET capacidad = 7
 WHERE placa = 'MNO654';
 
-INSERT INTO solicitud (solicitud_id, tiempo_alquiler, precio_total, estado, fecha_solicitud, fecha_inicio, fecha_fin, cliente_dni, placa, vendedor_dni)
+INSERT INTO solicitud (solicitud_id, tiempo_alquiler, precio_total, estado, fecha_solicitud, fecha_inicio, fecha_fin, cliente_dni, placa, vendedor_dni)--Insert para la tabla solicitud respetando las relaciones con cliente, carro y vendedor
 VALUES
 (1, 3, 350.00, 'pendiente', '2025-03-05', '2025-03-07', '2025-03-10', '59945620', 'ABC123', '87654321'),
 (2, 4, 240.00, 'aprobada', '2025-04-04', '2025-04-06', '2025-04-10', '69645328', 'DEF456', '76543218'),
 (3, 2, 560.00, 'aprobada', '2025-05-05', '2025-05-07', '2025-05-09', '49975626', 'GHI789', '65432187'),
 (4, 2, 180.00, 'pendiente', '2025-06-06', '2025-06-08', '2025-06-10', '74145223', 'JKL321', '54321876'),
 (5, 2, 700.00, 'finalizada', '2025-07-07', '2025-07-09', '2025-07-11', '90441524', 'MNO654', '43218765');
-
+--Updates de los datos ya existentes en la tabla solicitud usando Where desde la llave primaria (solicitud_id) para actualisar el estado, precio , fecha_fin y vendedor_dni
 UPDATE solicitud
 SET estado = 'aprobada'
 WHERE solicitud_id = 1;
