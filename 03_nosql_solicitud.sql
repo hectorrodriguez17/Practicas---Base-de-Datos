@@ -89,3 +89,19 @@ VALUES (1,
       ]
     }'::jsonb
 );
+
+
+--SELECT
+SELECT
+    solicitud_id,
+    datos_solicitud -> 'carro' AS objeto_carro_json,
+    datos_solicitud ->> 'codigo_solicitud' AS codigo_solicitud,
+    datos_solicitud ->> 'estado' AS estado_solicitud,
+    datos_solicitud -> 'cliente' ->> 'nombre' AS cliente_nombre,
+    datos_solicitud -> 'carro' ->> 'placa' AS placa,
+    datos_solicitud -> 'carro' ->> 'color' AS color,
+    datos_solicitud -> 'carro' -> 'categoria' ->> 'nombre' AS categoria,
+    datos_solicitud -> 'carro' -> 'sucursal' ->> 'nombre' AS sucursal
+FROM solicitud_doc
+WHERE datos_solicitud -> 'carro' -> 'categoria' ->> 'nombre' = 'Sedan'
+  AND datos_solicitud -> 'carro' -> 'sucursal' ->> 'nombre' = 'Sede Cercado';
