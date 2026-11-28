@@ -41,9 +41,9 @@ VALUES (1,
       "precio_total": 350.00,
       "estado": "aprobada",
       "fechas": {
-        "solicitud": "2026-03-05",
-        "inicio": "2026-03-07",
-        "fin": "2026-03-10"
+        "solicitud": "2025-03-05",
+        "inicio": "2025-03-07",
+        "fin": "2025-03-10"
       },
       "cliente": {
         "dni": "59945620",
@@ -70,7 +70,7 @@ VALUES (1,
       "vendedor": {
         "dni": "87654321",
         "nombre": "Carlos",
-        "apellido": "Ramos",
+        "apellido": "Rodriguez",
         "sucursal_id": 1
       },
       "seguros": [
