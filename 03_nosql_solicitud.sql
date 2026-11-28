@@ -7,25 +7,25 @@
     -- pago
 
 SELECT
-  s.solicitud_id,
-  s.estado AS estado_solicitud,
-  s.fecha_inicio,
-  s_fecha_fin,
-  s.precio_total,
-  c.dni AS cliente_dni,
-  c.nombre AS cliente_nombre,
-  c.apellido AS cliente_apellido,
-  ca.placa,
-  ca.marca,
-  ca.modelo,
-  v.nombre AS vendedor_nombre,
-  p.metodo_pago,
-  p.estado AS estado_pago
+    s.solicitud_id,
+    s.estado AS estado_solicitud,
+    s.fecha_inicio,
+    s.fecha_fin,
+    s.precio_total,
+    c.dni AS cliente_dni,
+    c.nombre AS cliente_nombre,
+    c.apellido AS cliente_apellido,
+    ca.placa,
+    ca.marca,
+    ca.modelo,
+    v.nombre AS vendedor_nombre,
+    p.metodo_pago,
+    p.estado AS estado_pago
 FROM solicitud s
-INNER JOIN cliente c ON s.cliente_dni = c.dni
-INNER JOIN carro ca ON s.place = ca.placa
-INNER JOIN vendedor v ON s.vendedor_dni = v.dni
-LEFT JOIN pago p ON p.solicitud_id = s.solicitud_id;
+INNER JOIN cliente c   ON s.cliente_dni  = c.dni
+INNER JOIN carro ca    ON s.placa        = ca.placa
+INNER JOIN vendedor v  ON s.vendedor_dni = v.dni
+LEFT JOIN pago p       ON p.solicitud_id = s.solicitud_id;
 
 --Diseño Nosql 
 CREATE TABLE solicitud_doc (
@@ -52,7 +52,7 @@ VALUES (1,
         "telefono": "991234567",
         "licencia": "LIC001"
       },
-      "carro": {
+    "carro": {
         "placa": "ABC123",
         "marca": "Toyota",
         "modelo": "Corolla",
@@ -62,7 +62,10 @@ VALUES (1,
           "nombre": "Sedan",
           "tarifa_diaria": 120.00
         },
-        "sucursal_id": 1
+        "sucursal": {
+          "id": 1,
+          "nombre": "Sede Cercado"
+        }
       },
       "vendedor": {
         "dni": "87654321",
