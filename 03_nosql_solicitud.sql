@@ -51,7 +51,7 @@ VALUES (1,
         "apellido": "Perez",
         "telefono": "991234567",
         "licencia": "LIC001"
-      },
+      }
     "carro": {
         "placa": "ABC123",
         "marca": "Toyota",
